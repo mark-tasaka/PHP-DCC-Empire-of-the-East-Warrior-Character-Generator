@@ -197,7 +197,7 @@ function getWillLuckBonus($luckMod, $luckySign)
 
 function getLanguages($intMod, $luckMod, $luckySign)
 {
-        $language = 'Common, Thieves\' Cant';
+        $language = 'Common';
         $bonusLanguages = 0;
 
         if($intMod > 0)

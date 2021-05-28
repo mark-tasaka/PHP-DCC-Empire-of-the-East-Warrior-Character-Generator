@@ -31,7 +31,6 @@
     include 'php/classDetails.php';
     include 'php/abilityScoreGen.php';
     include 'php/randomName.php';
-    include 'php/warriorAbilities.php';
     include 'php/xp.php';
     include 'php/diceRoll.php';
     include 'php/luckySign.php';
@@ -163,11 +162,11 @@
 
        $criticalDie = criticalDie($level);
 
-       $luckDie = luckDie($level);
+       $threat = threatRange($level);
 
        $actionDice = actionDice($level);
 
-       $attackBonus = attackBonus($level);
+       $attackBonus = deedDie($level);
 
        $luckySign = array();
        $luckySign = getBirthAugur();
@@ -193,6 +192,7 @@
        $title = title($level, $alignment);
 
        $initiative = getInit($agilityMod, $luckMod, $luckySign[0]);
+       $initiative += $level; 
 
        $languages = getLanguages($intelligenceMod, $luckMod, $luckySign[0]);
 
@@ -210,8 +210,9 @@
 
        $meleeHitLuckyBonus = meleeAttackLuckSign($luckMod, $luckySign[0]);
 
-       $meleeToHit = $attackBonus + $meleeHitLuckyBonus + $strengthMod;
-       
+       //$meleeToHit = $attackBonus + $meleeHitLuckyBonus + $strengthMod;
+       $meleeToHit =$meleeHitLuckyBonus + $strengthMod;
+
        $meleeDamageLuckyBonus = meleeDamageLuckSign($luckMod, $luckySign[0]);
 
        $meleeToDamage = $meleeDamageLuckyBonus + $strengthMod;
@@ -219,7 +220,8 @@
        
         $missileHitLuckyBonus = missileAttackLuckSign($luckMod, $luckySign[0]);
 
-        $missileToHit = $attackBonus + $missileHitLuckyBonus + $agilityMod;
+        //$missileToHit = $attackBonus + $missileHitLuckyBonus + $agilityMod;
+        $missileToHit = $missileHitLuckyBonus + $agilityMod;
 
         $missileDamageLuckyBonus = missileDamageLuckSign($luckMod, $luckySign[0]);
 
@@ -250,6 +252,16 @@
 
        }
 
+       
+       if(isset($_POST["theLuckyWeapon"]))
+       {
+           $luckyWeaponNumberString = $_POST["theLuckyWeapon"];
+       } 
+
+       $luckyWeaponNumber = (int)$luckyWeaponNumberString;
+       $luckyWeapon = getWeapon($luckyWeaponNumber)[0];
+
+
 
         $weaponArray = array();
         $weaponNames = array();
@@ -258,7 +270,7 @@
     //For Random Select weapon
     if(isset($_POST['thecheckBoxRandomWeaponsV3']) && $_POST['thecheckBoxRandomWeaponsV3'] == 1) 
     {
-        $weaponArray = getRandomWeapons();
+        $weaponArray = getRandomWeapons($luckyWeaponNumber);
 
     }
     else
@@ -271,6 +283,7 @@
             }
         }
     }
+
 
     
     
@@ -548,7 +561,7 @@
         
         <span id="attackBonus">
         <?php
-                $attackBonus = getModSign($attackBonus);
+               // $attackBonus = getModSign($attackBonus);
                 echo $attackBonus;
            ?>
            </span>
@@ -617,9 +630,9 @@
             ?>
         </span>
         
-        <span id="luckDie">
+        <span id="threatRange">
             <?php
-                echo $luckDie;
+                echo $threat;
             ?>
         </span>
 
@@ -680,7 +693,12 @@
             ?>
             </span>
 
-       
+            <span id="luckyWeapon">
+            <?php
+                echo $luckyWeapon;
+            ?>
+        </span>
+        
        
        <span id="weaponsList">
            <?php

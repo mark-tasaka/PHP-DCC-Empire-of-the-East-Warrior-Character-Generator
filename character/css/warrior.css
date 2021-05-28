@@ -47,7 +47,7 @@ body{
 #title{
     position:absolute;
     top: 176px;
-    left: 235px;
+    left: 225px;
 	font-size: 0.85em;
 }
 
@@ -164,7 +164,7 @@ body{
 
 #wealth{
     position:absolute;
-    top: 945px;
+    top: 960px;
     left: 680px;
     font-size: 0.6em;
     width: 230px;
@@ -183,9 +183,9 @@ body{
 
 #luckyWeapon{
     position:absolute;
-    top: 650px;
-    left: 450px;
-	font-size: 1em;
+    top: 660px;
+    left: 390px;
+	font-size: 0.9em;
 }
 
 
@@ -441,17 +441,17 @@ body{
     font-size: 0.9em;
 }
 
-#luckDie{
+#threatRange{
     position:absolute;
     top: 243px;
-    left: 580px;
+    left: 570px;
     font-size: 0.9em;
 }
 
 #attackBonus{
     position:absolute;
     top: 243px;
-    left: 430px;
+    left: 415px;
     font-size: 0.9em;
 }
 
@@ -462,12 +462,6 @@ body{
     font-size: 0.85em;
 }
 
-#threatRange{
-    position:absolute;
-    top: 380px;
-    left: 607px;
-	font-size: 0.75em;
-}
 
 #birthAugur{
     position:absolute;
@@ -482,7 +476,7 @@ body{
     top: 796px;
     left: 60px;
     font-size: 0.8em;
-    width: 320px;
+    width: 240px;
 }
 
 
