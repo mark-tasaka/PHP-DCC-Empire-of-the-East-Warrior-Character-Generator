@@ -6,6 +6,12 @@ A live version of the Warrior Character Generator is available at: https://www.o
 -------------------
 
 
+
+Update 1.02: 2021-05-31
+
+The launch page for the DCC Empire of the East Warrior Character Generator has been added.
+
+
 Update 1.01: 2021-05-28
 
 Updates to dccWarrior.php, warrior.css, classDetails.php, weapons.php, luckySign.php and gear.php.
